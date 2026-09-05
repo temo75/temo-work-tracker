@@ -7,9 +7,27 @@
 <style>
 :root{--bg:#071117;--panel:#0d1b24;--panel2:#10232f;--text:#eef7f7;--muted:#9fb0b8;--green:#18c98b;--red:#ef5b67;--blue:#2999df;--orange:#e6a24c;--line:#1e3542}
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#061015,#0a1821);color:var(--text)}button,input,select,textarea{font:inherit}.app{max-width:1100px;margin:auto;padding:18px}header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}h1{margin:0;font-size:28px;color:#62e4b5}header small{color:var(--muted)}#today{color:var(--muted);white-space:nowrap}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card,.section,.toolbox{background:linear-gradient(145deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:18px;padding:18px}.card .label{color:var(--muted);font-size:14px}.amount{font-size:30px;font-weight:bold;margin-top:10px}.blue{border-color:#1b4d6c}.green{border-color:#17684d}.red{border-color:#6e2931}.add{width:100%;margin:16px 0;padding:18px;border:0;border-radius:16px;background:linear-gradient(90deg,#119c72,#22d59a);color:white;font-size:19px;font-weight:bold;cursor:pointer}.section{margin-top:14px}.section h2{margin:0 0 14px;font-size:20px}.toolbox{margin-top:14px}.tools{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}.tools input,.tools select,.form input,.form textarea{width:100%;padding:13px;border-radius:10px;border:1px solid #29404c;background:#071117;color:white;font-size:16px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.mini{background:#09161e;border:1px solid var(--line);border-radius:14px;padding:13px}.mini b{display:block;font-size:20px;margin-top:5px}.mini span{color:var(--muted);font-size:13px}.item{display:grid;grid-template-columns:1fr auto;gap:12px;padding:14px;margin:9px 0;background:#0a151d;border:1px solid #1a2c37;border-radius:14px}.meta{color:var(--muted);font-size:13px;margin-top:5px}.right{text-align:right}.status{font-size:13px;font-weight:bold;margin:7px 0}.paid{color:#4fe2a4}.unpaid{color:#ff7c84}.actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:5px}.small,.backupBtn{background:#183445;color:white;border:1px solid #285269;border-radius:9px;padding:8px 10px;cursor:pointer}.edit{background:#26394a}.danger{background:#4a2228;border-color:#74333d}.empty{text-align:center;color:var(--muted);padding:28px}.modal{display:none;position:fixed;inset:0;background:#000a;align-items:center;justify-content:center;padding:16px;z-index:5}.modal.show{display:flex}.form{width:min(520px,100%);max-height:92vh;overflow:auto;background:#0c1a23;border:1px solid #28404d;border-radius:20px;padding:20px}.form h2{margin:0 0 8px}label{display:block;margin:12px 0 5px;color:#c7d4d8}.checkrow{display:flex;align-items:center;gap:9px;margin-top:14px;color:#c7d4d8}.checkrow input{width:auto}.row{display:flex;gap:10px;margin-top:18px}.save{flex:1;background:var(--green);border:0;border-radius:10px;padding:14px;color:#062016;font-weight:bold;font-size:16px}.cancel{background:#20323b;color:white;border:0;border-radius:10px;padding:14px}.backup{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.backupBtn{flex:1;min-width:150px}.monthList{display:grid;gap:8px}.monthRow{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:12px;background:#09161e;border:1px solid var(--line);border-radius:12px}.monthRow span{color:var(--muted);font-size:13px}.monthRow b{font-size:16px}footer{text-align:center;color:#71838c;font-size:12px;margin:22px 0 5px}@media(max-width:700px){.app{padding:12px}header h1{font-size:23px}.grid{grid-template-columns:1fr 1fr}.grid .card:first-child{grid-column:1/-1}.amount{font-size:26px}.tools{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.item{grid-template-columns:1fr}.right{text-align:left}.actions{justify-content:flex-start}.monthRow{grid-template-columns:1fr auto}.monthRow span{grid-column:1/-1}}
+
+#loginScreen{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:18px;background:linear-gradient(135deg,#061015,#0a1821)}
+#loginScreen.hidden{display:none}
+.loginBox{width:min(400px,100%);background:linear-gradient(145deg,#0d1b24,#10232f);border:1px solid #1e3542;border-radius:22px;padding:28px;text-align:center;box-shadow:0 20px 60px #0008}
+.loginBox h2{margin:0 0 10px;color:#62e4b5}.loginBox p{color:#9fb0b8;margin:0 0 20px}
+.loginBox input{width:100%;padding:15px;border-radius:11px;border:1px solid #29404c;background:#071117;color:#fff;font-size:17px;text-align:center;margin-bottom:12px}
+.loginBox button{width:100%;padding:15px;border:0;border-radius:11px;background:linear-gradient(90deg,#119c72,#22d59a);color:#062016;font-weight:bold;font-size:17px;cursor:pointer}
+#loginError{min-height:20px;color:#ff7c84;font-size:14px;margin-top:10px}
+
 </style>
 </head>
 <body>
+
+<div id="loginScreen"><div class="loginBox">
+<h2>🔐 TEMO სამუშაო ანგარიში</h2>
+<p>შეიყვანე პაროლი საიტზე შესასვლელად</p>
+<input id="loginPassword" type="password" placeholder="პაროლი" autocomplete="current-password">
+<button onclick="login()">შესვლა</button>
+<div id="loginError"></div>
+</div></div>
+
 <div class="app">
 <header><div><h1>TEMO სამუშაო ანგარიში</h1><small>ჩემი სამუშაო და გადახდები</small></div><div id="today"></div></header>
 
@@ -69,6 +87,25 @@
 </div></div>
 
 <script>
+
+const AUTH_KEY='temoWorkTrackerAuthorized';
+const AUTH_PASSWORD='temo2139-590';
+function login(){
+ const pass=$('loginPassword').value;
+ if(pass===AUTH_PASSWORD){
+  localStorage.setItem(AUTH_KEY,'yes');
+  $('loginScreen').classList.add('hidden');
+  $('loginPassword').value='';$('loginError').textContent='';
+ }else{
+  $('loginError').textContent='პაროლი არასწორია';
+  $('loginPassword').value='';$('loginPassword').focus();
+ }
+}
+window.addEventListener('DOMContentLoaded',()=>{
+ if(localStorage.getItem(AUTH_KEY)==='yes')$('loginScreen').classList.add('hidden');
+ $('loginPassword').addEventListener('keydown',e=>{if(e.key==='Enter')login()});
+});
+
 let jobs=[];try{jobs=JSON.parse(localStorage.getItem('temoJobs')||'[]')}catch(e){jobs=[]}
 let editingId=null;
 const $=id=>document.getElementById(id);
@@ -134,32 +171,52 @@ function toBase64(text){
 }
 async function updateWebsite(){
   const repo=$('ghRepo').value.trim(), token=$('ghToken').value.trim(), file=$('siteUpdateFile').files[0];
+
   if(!repo || !repo.includes('/')){alert('რეპოზიტორია ჩაწერე ასე: მომხმარებელი/რეპოზიტორია');return}
   if(!token){alert('GitHub Token ჩაწერე');return}
   if(!file){alert('აირჩიე ახალი index.html ფაილი');return}
-  if(!confirm('ნამდვილად ჩავანაცვლოთ საიტის არსებული index.html ახალი ფაილით?'))return;
+  if(!confirm('ნამდვილად ავტვირთოთ ახალი index.html?'))return;
 
   try{
-    const headers={Authorization:'Bearer '+token,Accept:'application/vnd.github+json'};
+    const headers={
+      Authorization:'Bearer '+token,
+      Accept:'application/vnd.github+json',
+      'X-GitHub-Api-Version':'2022-11-28'
+    };
     const url='https://api.github.com/repos/'+repo+'/contents/index.html';
     const old=await fetch(url,{headers});
-    if(!old.ok)throw new Error('GitHub-ზე არსებული index.html ვერ მოიძებნა');
-    const oldData=await old.json();
     const content=await file.text();
+
     const body={
-      message:'Update website from TEMO WORK TRACKER',
-      content:toBase64(content),
-      sha:oldData.sha
+      message:'Update index.html from TEMO WORK TRACKER',
+      content:toBase64(content)
     };
-    const res=await fetch(url,{method:'PUT',headers:{...headers,'Content-Type':'application/json'},body:JSON.stringify(body)});
+
+    if(old.ok){
+      const oldData=await old.json();
+      body.sha=oldData.sha;
+    }else if(old.status!==404){
+      const err=await old.json().catch(()=>({}));
+      throw new Error(err.message||'GitHub-თან დაკავშირება ვერ მოხერხდა');
+    }
+
+    const res=await fetch(url,{
+      method:'PUT',
+      headers:{...headers,'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    });
+
     if(!res.ok){
       const err=await res.json().catch(()=>({}));
       throw new Error(err.message||'ატვირთვა ვერ მოხერხდა');
     }
+
     saveGitHubSettings();
-    alert('მზადაა! ახალი index.html GitHub-ზე აიტვირთა. საიტის განახლებას ცოტა დრო შეიძლება დასჭირდეს.');
+    alert('მზადაა! index.html წარმატებით აიტვირთა.');
     $('siteUpdateFile').value='';
-  }catch(err){alert('შეცდომა: '+err.message)}
+  }catch(err){
+    alert('შეცდომა: '+err.message);
+  }
 }
 </script>
 
